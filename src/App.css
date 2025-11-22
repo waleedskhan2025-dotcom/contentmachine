@@ -1,0 +1,413 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #1a1a2e;
+  color: #eee;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.app-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  opacity: 0.9;
+  font-size: 1rem;
+}
+
+.app-content {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  flex: 1;
+}
+
+.left-panel,
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Audio Import */
+.audio-import {
+  background: #16213e;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.import-button {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.2s;
+}
+
+.import-button:hover {
+  background: #2563eb;
+}
+
+.hint {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  opacity: 0.7;
+}
+
+/* Timeline */
+.timeline {
+  background: #16213e;
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.waveform {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.lyric-markers {
+  position: relative;
+  height: 20px;
+  margin-top: 0.5rem;
+  background: #0f172a;
+  border-radius: 4px;
+}
+
+.lyric-marker {
+  position: absolute;
+  height: 100%;
+  background: rgba(59, 130, 246, 0.5);
+  border-left: 2px solid #3b82f6;
+  border-right: 2px solid #3b82f6;
+}
+
+/* Lyric Editor */
+.lyric-editor {
+  background: #16213e;
+  padding: 1.5rem;
+  border-radius: 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.lyric-editor h2 {
+  margin-bottom: 1rem;
+}
+
+.add-lyric {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.add-lyric input {
+  flex: 1;
+  padding: 0.75rem;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  color: #eee;
+  font-size: 1rem;
+}
+
+.add-button {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.add-button:hover {
+  background: #059669;
+}
+
+.lyric-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.lyric-item {
+  background: #0f172a;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 3px solid #334155;
+  transition: all 0.2s;
+}
+
+.lyric-item.active {
+  border-left-color: #3b82f6;
+  background: #1e293b;
+}
+
+.lyric-text {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.lyric-timing {
+  font-size: 0.875rem;
+  opacity: 0.7;
+  margin-bottom: 0.5rem;
+}
+
+.lyric-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.lyric-actions button {
+  background: #334155;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.lyric-actions button:hover {
+  background: #475569;
+}
+
+.lyric-actions button.delete {
+  background: #dc2626;
+}
+
+.lyric-actions button.delete:hover {
+  background: #b91c1c;
+}
+
+.edit-mode {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.edit-mode input {
+  flex: 1;
+  padding: 0.5rem;
+  background: #1e293b;
+  border: 1px solid #3b82f6;
+  border-radius: 4px;
+  color: #eee;
+}
+
+.empty-state {
+  text-align: center;
+  opacity: 0.6;
+  padding: 2rem;
+}
+
+/* Preview */
+.preview {
+  background: #16213e;
+  padding: 1.5rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.preview h2 {
+  align-self: flex-start;
+  margin-bottom: 1rem;
+}
+
+.preview-screen {
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.preview-lyric {
+  text-align: center;
+  padding: 2rem;
+  font-weight: bold;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.preview-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.preview-controls button {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-controls button.play-pause {
+  background: #10b981;
+  padding: 1rem;
+}
+
+.preview-controls button:hover {
+  opacity: 0.8;
+}
+
+.time-display {
+  font-size: 0.875rem;
+  opacity: 0.7;
+}
+
+/* Export Panel */
+.export-panel {
+  background: #16213e;
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.export-panel h2 {
+  margin-bottom: 1rem;
+}
+
+.export-settings {
+  background: #0f172a;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #1e293b;
+}
+
+.setting-row:last-child {
+  border-bottom: none;
+}
+
+.setting-row label {
+  font-weight: 500;
+}
+
+.export-button {
+  width: 100%;
+  background: #8b5cf6;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.export-button:hover:not(:disabled) {
+  background: #7c3aed;
+}
+
+.export-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.progress-bar {
+  height: 8px;
+  background: #0f172a;
+  border-radius: 4px;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+  transition: width 0.3s ease;
+}
+
+.export-success {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #10b981;
+  color: white;
+  border-radius: 8px;
+  font-size: 0.875rem;
+}
+
+/* Buttons */
+button {
+  transition: all 0.2s;
+}
+
+button:active {
+  transform: scale(0.98);
+}
